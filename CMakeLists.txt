@@ -7,5 +7,12 @@ endif()
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 
+configure_file(version.h.in version.h)
+
 # add the executable
 add_executable(helloworld main.cpp)
+
+target_include_directories(helloworld
+    PRIVATE "${CMAKE_BINARY_DIR}"
+)
+
