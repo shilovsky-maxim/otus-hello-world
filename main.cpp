@@ -1,10 +1,11 @@
 #include <iostream>
 
-#include "version.h"
+#include "lib.h"
 
 int main (int, char **)
 {
-    std::cout << "build " << PROJECT_VERSION_PATCH << std::endl;
-    std::cout << "Hello world!" << std::endl;
+    using namespace hw;
+    std::cout << "build " << buildNumber() << std::endl;
+    std::cout << welcomeString() << std::endl;
     return 0;
 }

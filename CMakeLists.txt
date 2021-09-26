@@ -11,8 +11,13 @@ configure_file(version.h.in version.h)
 
 # add the executable
 add_executable(helloworld main.cpp)
+add_library(hwlib lib.cpp)
 
 target_include_directories(helloworld
     PRIVATE "${CMAKE_BINARY_DIR}"
+)
+
+target_link_libraries(helloworld PRIVATE
+    hwlib
 )
 
