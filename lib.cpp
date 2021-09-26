@@ -10,4 +10,9 @@ namespace hw {
     std::string welcomeString() {
         return "Hello, World!";
     }
+
+    void printWelcomeText(std::ostream& out) {
+        out << "build " << buildNumber() << std::endl;
+        out << welcomeString() << std::endl;
+    }
 }
