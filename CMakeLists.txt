@@ -4,14 +4,28 @@ cmake_minimum_required(VERSION 3.10)
 if(NOT DEFINED ENV{GITHUB_RUN_NUMBER})
     set(ENV{GITHUB_RUN_NUMBER} 1)
 endif()
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+include(conan.cmake)
+conan_cmake_configure(REQUIRES boost/1.77.0
+                      GENERATORS cmake_find_package)
+
+conan_cmake_autodetect(settings)
+
+conan_cmake_install(PATH_OR_REFERENCE .
+                    BUILD missing
+                    REMOTE conancenter
+                    SETTINGS ${settings})
 
 configure_file(version.h.in version.h)
 
-# add the executable
-add_executable(helloworld main.cpp)
 add_library(hwlib lib.cpp)
+add_executable(helloworld main.cpp)
+
+enable_testing()
+add_subdirectory(tests)
 
 target_include_directories(helloworld
     PRIVATE "${CMAKE_BINARY_DIR}"
@@ -27,7 +41,7 @@ set_target_properties(helloworld hwlib PROPERTIES
 )
 
 if (MSVC)
-    target_compile_options(helloworld PRIVATE
+    target_compile_options(helloworld PRIVAT-E
         /W4
     )
     target_compile_options(hwlib PRIVATE

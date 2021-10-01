@@ -5,7 +5,6 @@
 int main (int, char **)
 {
     using namespace hw;
-    std::cout << "build " << buildNumber() << std::endl;
-    std::cout << welcomeString() << std::endl;
+    printWelcomeText(std::cout);
     return 0;
 }
