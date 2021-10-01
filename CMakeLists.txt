@@ -27,7 +27,7 @@ add_executable(helloworld main.cpp)
 enable_testing()
 add_subdirectory(tests)
 
-target_include_directories(helloworld
+target_include_directories(hwlib
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
