@@ -56,3 +56,5 @@ else ()
     )
 endif()
 
+install(TARGETS helloworld RUNTIME DESTINATION bin)
+
