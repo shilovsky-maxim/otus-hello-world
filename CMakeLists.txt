@@ -27,7 +27,7 @@ add_executable(helloworld main.cpp)
 enable_testing()
 add_subdirectory(tests)
 
-target_include_directories(helloworld
+target_include_directories(hwlib
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
@@ -55,4 +55,16 @@ else ()
         -Wall -Wextra -pedantic -Werror
     )
 endif()
+
+install(TARGETS helloworld RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
+set(CPACK_PACKAGE_CONTACT max-in-3d@ngs.ru)
+
+include(CPack)
+
 

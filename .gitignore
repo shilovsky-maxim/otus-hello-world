@@ -5,3 +5,7 @@
 /Makefile
 /cmake_install.cmake
 /version.h
+/Testing/Temporary/
+/build-debug
+/tests/build-debug/
+/tests/Testing/
