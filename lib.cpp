@@ -12,7 +12,7 @@ namespace hw {
     }
 
     void printWelcomeText(std::ostream& out) {
-        out << "Build " << buildNumber() << std::endl;
+        out << "build " << buildNumber() << std::endl;
         out << welcomeString() << std::endl;
     }
 }
